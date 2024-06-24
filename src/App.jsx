@@ -13,8 +13,7 @@ function App() {
   const addItemHandler = (title) => {
     const id = Math.floor(Math.random() * 10000);
     const newProduct = { id, title }
-    setProducts([...products, newProduct])
-    
+    setProducts([...products, newProduct])    
   }
   console.log(products)
   return (

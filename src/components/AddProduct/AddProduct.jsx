@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import './AddProduct.scss'
 
 
-const AddProduct = ({addItemHandler}) => {
+
+const AddProduct = ({addItemHandler}) => { 
+
   const [title, setTitle] = useState('');
+
     const submitHandler = (e)=> {
-        e.preventDefault();
-        addItemHandler(title);
+      e.preventDefault();
+      addItemHandler(title);
     }
 
   return (
@@ -19,8 +21,10 @@ const AddProduct = ({addItemHandler}) => {
   )
 }
 
-export default AddProduct
-
 AddProduct.propTypes = {
   addItemHandler: PropTypes.func
 };
+
+export default AddProduct
+
+

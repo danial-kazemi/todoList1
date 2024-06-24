@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 
-Product.propTypes = {
-    item: PropTypes.object,
-    deleteItemHandler: PropTypes.any,
-  };
-function Product({item,deleteItemHandler}) {
+const Product= ({item, deleteItemHandler}) => {
   return (
     <li>
         <h3>{item.title}</h3>
@@ -12,5 +8,10 @@ function Product({item,deleteItemHandler}) {
     </li>
   )
 }
+
+Product.propTypes = {
+  item: PropTypes.object,
+  deleteItemHandler: PropTypes.func,
+};
 
 export default Product

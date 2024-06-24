@@ -1,13 +1,8 @@
 import './ProductList.scss';
 import Product from './Product/Product';
 import PropTypes from 'prop-types';
-ProductList.propTypes = {
-    products: PropTypes.array,
-    deleteItemHandler: PropTypes.func 
-    // Other prop validations can continue from here
-  };
 
-function ProductList({products, deleteItemHandler}) {  
+const ProductList = ({products, deleteItemHandler}) => {  
   return (
     <section className='product'>
         <h2>ProductList</h2>
@@ -20,5 +15,10 @@ function ProductList({products, deleteItemHandler}) {
     
   )
 }
+
+ProductList.propTypes = {
+  products: PropTypes.array,
+  deleteItemHandler: PropTypes.func 
+};
 
 export default ProductList
