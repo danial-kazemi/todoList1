@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './AddProduct.scss'
+import { IoAdd } from "react-icons/io5";
+
 
 
 
@@ -21,7 +23,7 @@ const AddProduct = ({addItemHandler}) => {
   return (
     <form className='form' onSubmit={(e) => submitHandler(e) }>
         <input className='form__input' type="text"  onChange={(e) => setTitle(e.target.value)} value={title}/>
-        <button disabled={buttonDisable === true ? true : false} className='form__button' type='submit'>add</button>        
+        <button disabled={buttonDisable === true ? true : false} className='form__button' type='submit'><IoAdd /></button>        
     </form>
   )
 }

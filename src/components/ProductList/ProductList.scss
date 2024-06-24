@@ -9,10 +9,13 @@ h2 {
         list-style: none;
         display: flex;
         flex-direction: column;
-        
+        &:nth-child(2n + 1) {
+            background-color: red;
+        }        
     }
     &__item{
         color: $myColor;
         padding: .2rem 0;
     }
+    
 }

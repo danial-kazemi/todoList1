@@ -28,8 +28,10 @@ function App() {
   }
   return (
     <>
-      <AddProduct addItemHandler={addItemHandler}/>
-      <ProductList products={products} deleteItemHandler={deleteItemHandler} />
+      <main className='main'>
+        <AddProduct addItemHandler={addItemHandler}/>
+        <ProductList products={products} deleteItemHandler={deleteItemHandler} />
+      </main>
     </>
   )
 }
