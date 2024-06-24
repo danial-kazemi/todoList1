@@ -1,25 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ProductList from './components/ProductList/ProductList';
-import productsData from './API/productData';
+// import productsData from './API/productData';
 import AddProduct from './components/AddProduct/AddProduct';
+import getDataFromAPI from './API/getDataFromAPI';
+import deleteDataFromAPI from './API/deleteDataFromAPI';
+import addDataToApi from './API/addDataToApi';
 import './App.css'
 
+const apiAddress = "http://localhost:8000/products";
 function App() {
-  const [products, setProducts] = useState(productsData);
-  const deleteItemHandler = (id) => {   
-    setProducts(products.filter((product) => product.id !== id))
-  }
+  const [products, setProducts] = useState([]);
 
-  const addItemHandler = (title) => {
-    const id = Math.floor(Math.random() * 10000);
-    const newProduct = { id, title }
-    setProducts([...products, newProduct])    
+  useEffect( () => {
+    getDataFromAPI(apiAddress).then((res) => setProducts(res));
+  }, []);
+  const deleteItemHandler = (id) => {   
+    deleteDataFromAPI(apiAddress, id);
+    setProducts(products.filter((product) => product.id !== id))    
+  }  
+
+  const addItemHandler = (title) => {  
+    if(title.length >= 1) {
+        addDataToApi(apiAddress, title).then((data) => setProducts([...products, data]) );
+    } else {
+      throw new Error('empty')
+    } 
   }
-  console.log(products)
   return (
     <>
-    <AddProduct addItemHandler={addItemHandler}/>
-    <ProductList products={products} deleteItemHandler={deleteItemHandler}/>     
+      <AddProduct addItemHandler={addItemHandler}/>
+      <ProductList products={products} deleteItemHandler={deleteItemHandler} />
     </>
   )
 }

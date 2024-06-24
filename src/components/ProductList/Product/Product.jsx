@@ -8,7 +8,6 @@ const Product= ({item, deleteItemHandler}) => {
     </li>
   )
 }
-
 Product.propTypes = {
   item: PropTypes.object,
   deleteItemHandler: PropTypes.func,

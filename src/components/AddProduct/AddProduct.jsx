@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './AddProduct.scss'
 
@@ -7,16 +7,21 @@ import './AddProduct.scss'
 const AddProduct = ({addItemHandler}) => { 
 
   const [title, setTitle] = useState('');
-
+  const[buttonDisable, setButtonDisable] = useState(true);  
+  useEffect(()=> {
+    setButtonDisable(title.length > 0 ? false: true)  
+  },[title])  
     const submitHandler = (e)=> {
       e.preventDefault();
+      
       addItemHandler(title);
+      setTitle('');
     }
 
   return (
-    <form className='form' onSubmit={(e) => submitHandler(e) }>        
+    <form className='form' onSubmit={(e) => submitHandler(e) }>
         <input className='form__input' type="text"  onChange={(e) => setTitle(e.target.value)} value={title}/>
-        <button className='form__button' type='submit'>add</button>        
+        <button disabled={buttonDisable === true ? true : false} className='form__button' type='submit'>add</button>        
     </form>
   )
 }
