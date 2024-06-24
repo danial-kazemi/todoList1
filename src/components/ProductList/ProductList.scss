@@ -1,0 +1,18 @@
+
+$myColor: rgb(66, 66, 66);
+
+h2 {
+  color: $myColor;
+}
+.product {
+    &__list{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    &__item{
+        color: $myColor;
+        padding: .2rem 0;
+    }
+}
